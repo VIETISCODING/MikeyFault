@@ -1,24 +1,17 @@
 #include<bits/stdc++.h> 
 typedef long long ll; //using ll=long long
 using namespace std;
-
-ll nt(ll n){
-	for(ll i=2;i<=sqrt(n);i++){
-	    if(n%i==0) return 0; 
-	} 
-	return n>1; 
-} 
+ll lcm(ll a,ll b){
+	return a*(b/__gcd(a,b));
+}
 int main(){
 	ll t;
 	cin>>t;
 	while(t--){
-		ll n,i=1,cnt=0;
-		cin>>n;
-		while(i*i<=n){
-			if(nt(i)) cnt++;
-			i++; 
-		} 
-		cout<<cnt<<endl; 
+	    ll x,y,z,n;
+	    cin>>x>>y>>z>>n;
+	    ll s=lcm(x,lcm(y,z));
+		if(s>=pow(10,n)) cout<<"-1"<<endl;
+		else cout<<s*(ll)ceil(pow(10,n-1)/s)<<endl;
 	} 
 } 
-
